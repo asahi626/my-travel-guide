@@ -185,17 +185,21 @@ h2 {
    =================================================== */
 @media (max-width: 600px) {
   body {
+    /* 2段メニューの高さに合わせて、コンテンツが隠れないように上の余白を増やしました */
     padding: 115px 5px 10px 5px; 
+    
+    /* ★追加：スマホでの表示バグを防ぐため、背景の固定を解除して一緒にスクロールさせます */
+    background-attachment: scroll !important; 
   }
+  
+  .nav-bar {
+    overflow-x: hidden;
   
   .sp-br {
     display: block; /* スマホ幅になったら改行を発動させる！ */
   }
 
-  .nav-bar {
-    overflow-x: hidden; 
-    white-space: normal; 
-  }
+
   .nav-menu {
     flex-wrap: wrap; 
     height: auto; 
@@ -205,7 +209,7 @@ h2 {
     width: 25%; 
   }
   .nav-item a {
-    font-size: 14px; /* ★ナビメニューの文字を大きくしました（10px → 12px） */
+    font-size: 10px; /* ★ナビメニューの文字を大きくしました（10px → 12px） */
     padding: 10px 2px;
     text-align: center;
     line-height: 1.3;
