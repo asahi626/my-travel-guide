@@ -181,25 +181,37 @@ h2 {
   margin-top: 5px; /* 上の隙間をスッキリさせる */
 }
 /* ===================================================
-   ★ スマホ対応
+   ★ スマホ対応（背景画像サイズバグの完全修正版）
    =================================================== */
 @media (max-width: 600px) {
   body {
     /* 2段メニューの高さに合わせて、コンテンツが隠れないように上の余白を増やしました */
     padding: 115px 5px 10px 5px; 
     
-    /* ★追加：スマホでの表示バグを防ぐため、背景の固定を解除して一緒にスクロールさせます */
-    background-attachment: scroll !important; 
+    /* ★修正：body自体に設定していた背景画像をスマホの時だけ一度消去します */
+    background-image: none !important; 
+  }
+  
+  /* ★新設：bodyの後ろにスマホ画面ぴったりの背景専用の膜を固定配置します */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* コンテンツ（文字）の裏側に配置 */
+    
+    /* PC版と同じ海の画像と半透明フィルターを設定 */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("../assets/sea.png");
+    background-size: cover;
+    background-position: center;
   }
   
   .nav-bar {
-    overflow-x: hidden;
+    overflow-x: hidden; 
+    white-space: normal; 
   }
-  .sp-br {
-    display: block; /* スマホ幅になったら改行を発動させる！ */
-  }
-
-
   .nav-menu {
     flex-wrap: wrap; 
     height: auto; 
@@ -209,7 +221,7 @@ h2 {
     width: 25%; 
   }
   .nav-item a {
-    font-size: 10px; /* ★ナビメニューの文字を大きくしました（10px → 12px） */
+    font-size: 14px; 
     padding: 10px 2px;
     text-align: center;
     line-height: 1.3;
@@ -224,22 +236,23 @@ h2 {
     padding: 20px 15px;
     box-shadow: none;
   }
-  /* ★ここに新設：スマホの2段ナビの高さに合わせて、ジャンプ位置をさらに下にずらす */
+  
+  /* スマホのジャンプ位置調整 */
   .section-box {
     scroll-margin-top: 110px; 
   }
-/* スマホ用の見出しとボタン */
+  
+  /* スマホ用の見出しとボタン */
   h2 {
     font-size: 16px;
-    /* ★スマホ側でも念のため半透明の指定を確認・上書きします */
     background-color: rgba(26, 82, 118, 0.85); 
     padding: 12px 90px 12px 10px;
   }
   .official-btn {
-    top: 50%; /* ★PC版と同じく、上下の中央に配置 */
-    bottom: auto; /* 下寄せを解除 */
-    transform: translateY(-50%); /* ★真ん中にピタッと合わせる */
-    right: 8px; /* 右端からの距離 */
+    top: 50%; 
+    bottom: auto; 
+    transform: translateY(-50%); 
+    right: 8px; 
     left: auto;
     text-align: center;
     font-size: 11px;
