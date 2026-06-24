@@ -10,7 +10,7 @@ body {
   padding: 80px 10px 20px 10px;
   
   /* ★追加：背景画像と半透明フィルター */
-  background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("../assets/sea.png");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url("../assets/sea.png");
   background-size: cover;       /* 画面いっぱいに広げる */
   background-position: center;  /* 画像の中央を基準にする */
   background-attachment: fixed; /* スクロールしても背景だけ固定する（おしゃれ！） */
@@ -41,6 +41,8 @@ body {
 
   /* ★追加：0.3秒かけて滑らかに出し入れする設定 */
   transition: transform 0.3s ease-in-out;
+  will-change: transform, backdrop-filter;
+  -webkit-backface-visibility: hidden;
 }
 /* ★新設：下スクロール時にJavaScript側からこのクラスを付与して画面外へ引っ込めます */
 .nav-bar.nav-hidden {
@@ -101,6 +103,8 @@ h1 {
   /* ★ここがポイント：字間を広げて高級感を出す */
   letter-spacing: 0.2em; 
   text-transform: uppercase;  /* 英語にした場合に大文字にする設定 */
+  will-change: backdrop-filter;
+  -webkit-transform: translateZ(0);
 }
 h1 a { 
   text-decoration: none; 
@@ -128,6 +132,8 @@ h2 {
   margin: 0 0 15px 0;
   border-radius: 4px;
   position: relative;
+  will-change: backdrop-filter;
+  -webkit-transform: translateZ(0);
 }
 
 .official-btn {
@@ -203,7 +209,7 @@ h2 {
     z-index: -1; /* コンテンツ（文字）の裏側に配置 */
     
     /* PC版と同じ海の画像と半透明フィルターを設定 */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url("../assets/sea.png");
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url("../assets/sea.png");
     background-size: cover;
     background-position: center;
   }
