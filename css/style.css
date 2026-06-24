@@ -194,7 +194,7 @@ h2 {
   
   .nav-bar {
     overflow-x: hidden;
-  
+  }
   .sp-br {
     display: block; /* スマホ幅になったら改行を発動させる！ */
   }
