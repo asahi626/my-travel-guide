@@ -105,6 +105,7 @@ h1 {
   text-transform: uppercase;  /* 英語にした場合に大文字にする設定 */
   will-change: backdrop-filter;
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 h1 a { 
   text-decoration: none; 
@@ -134,6 +135,7 @@ h2 {
   position: relative;
   will-change: backdrop-filter;
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .official-btn {
